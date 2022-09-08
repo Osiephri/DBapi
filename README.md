@@ -6,6 +6,6 @@ To run this application you'd need to have the following.
 
 ### To run this just clone this repo by doing
 `git clone https://github.com/Osiephri/DBapi.git`
-### Run this appliacation in kubernetes using ..
+### Run this application in kubernetes using ..
 `kubectl apply -f deployment.yml`
 ###This should create the service which should be accessible via a loadbalancer.
