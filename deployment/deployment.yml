@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: DBapi
+  labels:
+    app: DBapi
+spec: 
+  replicas: 2
+  selectors: 
+    matchLabels: 
+      app: DBapi
+  template: 
+    metadata: 
+      labels:
+        app: DBapi
+    spec:
+      containers:
+      - image: scinet0786/background_api:
+        name:  DBapi
+        ports:
+        - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service 
+metadata: 
+   name: DBapi-svc  
+spec: 
+  selector:
+    app: DBapi
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 5000
+    nodePort: 31000
