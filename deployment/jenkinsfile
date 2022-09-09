@@ -12,7 +12,7 @@ node{
                   sh  'git config user.email osiephriobukohwo@gmail.com'
                   sh 'git config user.name Osiephri'
                   sh  'cat deployment.yaml'
-                  sh  "sed -n 's/scinet0786/background_api.*|scinet0786/background_api:${manifest}/g/i' deployment.yaml"
+                  sh  "sed -n 's/scinet0786/background_api.*+scinet0786/background_api:${manifest}/g/i' deployment.yaml"
                   sh  "cat deployment.yaml"
                   sh  "git add ."
                   sh  "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"

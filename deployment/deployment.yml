@@ -18,7 +18,15 @@ spec:
       - image: scinet0786/background_api:
         name:  DBapi
         ports:
-        - containerPort: 5000
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 512mi
+          limits:
+            cpu: 2000m
+            memory:1024mi
+        
 
 ---
 apiVersion: v1
@@ -34,3 +42,32 @@ spec:
     port: 8000
     targetPort: 5000
     nodePort: 31000
+
+--- 
+apiVersion: extensions/v1beta1
+kind: Ingress 
+metadata:
+  name:DBapi-ingress
+  namespace: default
+spec:
+  rules:
+    http:
+      paths:
+        - backend:
+          ServiceName: DBapi-svc
+          ServicePort: 8000
+
+---
+ApiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: DBapi-hpa
+  namespace: default
+spec:
+  ScaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: DBapi
+  minReplicas: 1
+  maxReplicas: 10
+  TargetCpuUtilizationPercentage: 50
