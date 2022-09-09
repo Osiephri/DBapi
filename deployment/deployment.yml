@@ -54,8 +54,8 @@ spec:
     http:
       paths:
         - backend:
-          ServiceName: DBapi-svc
-          ServicePort: 8000
+            ServiceName: DBapi-svc
+            ServicePort: 8000
 
 ---
 ApiVersion: autoscaling/v1
