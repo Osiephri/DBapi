@@ -15,7 +15,7 @@ spec:
         app: DBapi
     spec:
       containers:
-      - image: scinet0786/background_api:
+      - image: scinet0786/background_api:1.3
         name:  DBapi
         ports:
         - containerPort: 8000
