@@ -8,7 +8,11 @@ While using Docker i was able to make good use of my build features as i ensured
 
 # To run this just clone this repo by doing
 `git clone https://github.com/Osiephri/DBapi.git`
+
 # Run this application in kubernetes using ..
+•Enter the deployment folder in the source code and apply the configuration to provision the resources.
+`cd deployment`
+•Apply the deployment in the cluster using the following command.
 `kubectl apply -f deployment.yml`
 
 
